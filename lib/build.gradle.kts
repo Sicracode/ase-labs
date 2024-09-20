@@ -1,6 +1,5 @@
 plugins {
-    java
-    jacoco
+    id("hu.bme.mit.ase.shingler.gradle.java")
 }
 
 java.toolchain {
@@ -27,14 +26,3 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
-tasks {
-    test {
-        useJUnitPlatform()
-        testLogging.showStandardStreams = true
-        finalizedBy(jacocoTestReport)
-    }
-
-    jacocoTestReport {
-        inputs.files(test.get().outputs)
-    }
-}
